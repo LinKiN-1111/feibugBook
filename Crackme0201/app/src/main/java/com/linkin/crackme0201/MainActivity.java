@@ -18,25 +18,25 @@ public class MainActivity extends AppCompatActivity {
     private Button btn_register;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setTitle("程序未注册");
+        setTitle(R.string.unregister);
         edit_userName = (EditText) findViewById(R.id.edit_username);
         edit_sn = (EditText) findViewById(R.id.edit_sn);
         btn_register = (Button) findViewById(R.id.button_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
                 if (!checkSN(edit_userName.getText().toString().trim(),
                         edit_sn.getText().toString().trim())) {
                     Toast.makeText(MainActivity.this,
-                            "无效用户名或注册码", Toast.LENGTH_SHORT).show();
+                            R.string.unsuccessed, Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(MainActivity.this,
-                            "恭喜您！注册成功", Toast.LENGTH_SHORT).show();
+                            R.string.successed, Toast.LENGTH_SHORT).show();
                     btn_register.setEnabled(false);
-                    setTitle("程序已注册");
+                    setTitle(R.string.registered);
                 }
             }
         });
